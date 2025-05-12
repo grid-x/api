@@ -1,5 +1,17 @@
 components:
   responses:
+    AccountNotFoundResponse:
+      description: Account not found.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: "#/components/schemas/NotFoundException"
+    BadGatewayExceptionResponse:
+      description: There has been an error from an upstream server.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: "#/components/schemas/BadGateway"
     BadRequestExceptionResponse: #400
       description: Malformed request.
       content:
@@ -42,3 +54,9 @@ components:
         application/vnd.gridx.v2+json:
           schema:
             $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/InternalException'
+    SystemNotFoundResponse:
+      description: System not found
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: "#/components/schemas/NotFoundException"
