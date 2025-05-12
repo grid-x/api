@@ -1,0 +1,39 @@
+components:
+  parameters:
+    page:
+      name: page
+      description: |
+        Requested page, to be used in combination with the `per_page` parameter.
+      in: query
+      schema:
+        type: integer
+        format: int32
+        default: 1
+        minimum: 1
+      example: 5
+    perPage:
+      name: per_page
+      description: |
+        Requested number of items per page.
+      in: query
+      schema:
+        type: integer
+        format: int32
+        default: 20
+        minimum: 20
+        maximum: 100
+      example: 50
+    sort:
+      name: sort
+      description: Sort results based on a key.
+      in: query
+      schema:
+        type: string
+      example: created_at
+    order:
+      name: order
+      description: Order direction of the results, to be used in combination with `sort` parameter.
+      in: query
+      schema:
+        type: string
+      example: desc
