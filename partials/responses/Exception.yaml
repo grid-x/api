@@ -1,0 +1,44 @@
+components:
+  responses:
+    BadRequestExceptionResponse: #400
+      description: Malformed request.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/BadRequestException'
+    UnauthorizedException: #401
+      description: Unauthorized.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/UnauthorizedException'
+    ForbiddenExceptionResponse: #403
+      description: Forbidden.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/ForbiddenException'
+    EntityNotFoundResponse: #404
+      description: Requested entity not found.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/NotFoundException'
+    ConflictExceptionResponse: #409
+      description: Resource already exists
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/ConflictException'
+    InvalidExceptionResponse: #422
+      description: Validation failed.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/InvalidException'
+    InternalExceptionResponse: #500
+      description: There has been an internal error on our side. We're looking into it.
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: '../schemas/Exception.yaml#/components/schemas/InternalException'

@@ -1,0 +1,109 @@
+components:
+  schemas:
+    ValidationException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: ClientError - Validation
+          description: Indicates that the request body contains fields which do not pass the validation.
+          type: object
+          required:
+            - message
+            - details
+          example:
+            message: Validation failed
+            details:
+              - Name should not be empty
+    NotFoundException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: ClientError - Not Found
+          description: Not Found indicates that the entity was not found.
+          example:
+            message: Not Found
+    UnauthorizedException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: 'ClientError - Unauthorized'
+          description: The client isn't authorized to access the requested resource.
+          example:
+            message: Unauthorized
+    InvalidException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: ClientError - Validation
+          description: |
+            Validation indicates that the request body contains fields which
+            does not pass the validation.
+          type: object
+          required:
+            - message
+            - details
+          example:
+            message: Validation failed
+            details:
+              - email is not valid
+    ConflictException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: ClientError - Conflict
+          description: |
+            Conflict indicates that the client is attempting to create a resource that already exists.
+          type: object
+          example:
+            message: Resource already exists
+    ForbiddenException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: UnauthorizedError - Forbidden Error
+          description: Forbidden Error
+          example:
+            message: Bad credentials
+    BadRequestException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: ClientError - Bad Request
+          description: |
+            Bad Request indicates that the request body is not a valid JSON or
+            it contains a invalid json type.
+          example:
+            message: Problems parsing JSON
+    InternalException:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: ServerSideError - Internal Server Error
+          description: Internal Server Error
+          example:
+            message: Internal Server Error
+    BadGateway:
+      readOnly: true
+      allOf:
+        - $ref: '#/components/schemas/GeneralException'
+        - title: BadGatewayError
+          description: Indicates that there has been an error from an upstream server.
+          example:
+            message: Bad Gateway
+    GeneralException:
+      title: General Exception
+      description: Represents a general error structure returned by our REST API.
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message represents the message reported to the user.
+        details:
+          type: array
+          description: |
+            Details represents detail information for the user to fix this
+            problem
+          items:
+            type: string
+      required:
+        - message
