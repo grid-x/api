@@ -1,0 +1,12 @@
+components:
+  parameters:
+    systemID:
+      name: systemID
+      description: |
+        Unique identifier used to access a system.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: aa3e5a93-bb38-4b15-b7f2-af40daf3a1dc
