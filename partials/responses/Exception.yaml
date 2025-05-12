@@ -5,13 +5,13 @@ components:
       content:
         application/vnd.gridx.v2+json:
           schema:
-            $ref: "#/components/schemas/NotFoundException"
+            $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/NotFoundException"
     BadGatewayExceptionResponse:
       description: There has been an error from an upstream server.
       content:
         application/vnd.gridx.v2+json:
           schema:
-            $ref: "#/components/schemas/BadGateway"
+            $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/BadGateway"
     BadRequestExceptionResponse: #400
       description: Malformed request.
       content:
@@ -59,4 +59,4 @@ components:
       content:
         application/vnd.gridx.v2+json:
           schema:
-            $ref: "#/components/schemas/NotFoundException"
+            $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/NotFoundException"
