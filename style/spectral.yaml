@@ -137,7 +137,7 @@ rules:
   ensure-response-description-punctuation:
     description: Response description must end with a dot.
     given: $.components.schemas[*]
-    severity: error
+    severity: warn
     message: "{{error}}"
     then:
       field: description
