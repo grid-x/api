@@ -1,0 +1,12 @@
+components:
+  parameters:
+    gatewayID:
+      name: gatewayID
+      description: |
+        Unique identifier used to access a gateway.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: 4ef41512-8445-4b90-aa53-8f8549b3f4bd
