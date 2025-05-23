@@ -1,0 +1,43 @@
+components:
+  schemas:
+    PolicyGroup:
+      title: Policy Group
+      type: object
+      allOf:
+        - $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractPolicyGroup.yaml#/components/schemas/AbstractPolicyGroup"
+        - properties:
+            id:
+              type: string
+              format: uuid
+              description: Unique identifier of the policy group.
+              example: 97874c1b-d073-4b06-bf01-a1497fbe1146
+              readOnly: true
+            accountID:
+              type: string
+              format: uuid
+              description: Unique identifier of the creator account.
+              example: 97874c1b-d073-4b06-bf01-a1497fbe1146
+              readOnly: true
+            createdAt:
+              description: Time at which the policy group was created in UTC (RFC 3339 format).
+              type: string
+              format: date-time
+              example: "2019-11-06T15:33:00Z"
+              readOnly: true
+            updatedAt:
+              description: Time at which the policy group was last updated in UTC (RFC 3339 format).
+              type: string
+              format: date-time
+              example: "2019-11-08T23:20:50Z"
+              readOnly: true
+            userCount:
+              type: integer
+              description: Amount of users that are in this group.
+              example: 10
+              readOnly: true
+          required:
+            - id
+            - name
+            - accountID
+            - createdAt
+            - updatedAt
