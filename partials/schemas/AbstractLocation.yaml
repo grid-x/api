@@ -1,0 +1,40 @@
+components:
+  schemas:
+    AbstractLocation:
+      type: object
+      properties:
+        city:
+          description: The city of the location.
+          type: string
+          example: Aachen
+        country:
+          description: The country of the location.
+          type: string
+          example: Germany
+        addressLine1:
+          description: |
+            First line of the location's address, typically containing the 
+            main information such as the street name and house number.
+          type: string
+          example: Oppenhoffallee 143
+        addressLine2:
+          description: |
+            Second line of the location's address, typically containing additional 
+            information such as apartment numbers, suite numbers, or other details 
+            that can help in identifying the exact location of the address.
+          type: string
+        addressLine3:
+          description: |
+            Third line of the location's address, typically containing any other 
+            details that can help in identifying the exact location of the address.
+          type: string
+        addressLine4:
+          description: |
+            Fourth line of the location's address, typically containing any other 
+            details that can help in identifying the exact location of the address.
+          type: string
+        timeZone:
+          description: The TZ Identifier of the location's timezone.
+          type: string
+          example: Europe/Berlin
+          readOnly: true
