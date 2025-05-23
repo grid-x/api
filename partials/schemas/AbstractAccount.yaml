@@ -1,0 +1,60 @@
+components:
+  schemas:
+    AbstractAccount:
+      title: Account
+      description: |
+        An account describes an organizational unit to manage access to systems for one or multiple users.
+
+        This is the base type for the more concrete usages and not used directly within operations.
+      type: object
+      properties:
+        name:
+          type: string
+          example: John Doe
+          description: Name of the account, can be chosen freely but should be kept terse and descriptive.
+          minLength: 1
+          maxLength: 256
+        isInstaller:
+          x-internal: true
+          type: boolean
+          description: Specifies if account is an installer.
+          example: false
+        email:
+          type: string
+          format: email
+          example: john@doe.com
+          description: The email field of the account can optionally be chosen e.g. for contact purposes (in order to reach the responsible person for the account).
+          maxLength: 256
+        audience:
+          x-internal: true # reason: reference to Auth0
+          type: string
+          description: Audience is an internal ID that should not be relied upon by external parties in any way.
+        solution:
+          $ref: '#/components/schemas/AccountSolution'
+        modules:
+          $ref: '#/components/schemas/Modules'
+    AccountSolution:
+      type: string
+      description: |
+        Represents the supported solutions within the account:
+        - HOME if the account contains household-like systems. 
+        - CHARGE if the account is used solely for charging station fleet management.
+        - GENERAL if unsure what the account should contain or if it's a mix of multiple solutions.
+        - SMART_DISTRICT if the account is used solely for smart district management.
+        If not set, the parent account's solution will be assumed.
+      enum:
+        - HOME
+        - CHARGE
+        - GENERAL
+        - SMART_DISTRICT
+        - MICROGRID
+        - HOME_VIRTUAL_METERING
+        - COMMERCIAL
+        - CUSTOM_P2P
+    Modules:
+      x-internal: true # reason: "cheap" approach for enabling modules, not API-user suitable.
+      description: Modules that are enabled for this account.
+      type: array
+      items:
+        type: string
+        enum: [ "Grid Protector", "Web App", "Energy Billing", "Energy Optimizer", "Mobile App", "V2G/V2H", "Multi-Energy Opt", "Peak Shaver", "Cloud Connector", "VPP", "Tariff Timer", "API","Grid Signal Processor" ]
