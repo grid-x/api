@@ -3,7 +3,7 @@ components:
     User:
       type: object
       allOf:
-        - $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractPolicyGroup.yaml#/components/schemas/UserWithoutAuth"
+        - $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/UserWithoutAuth.yaml#/components/schemas/UserWithoutAuth"
         - properties:
             auth:
               x-internal: true
