@@ -1,0 +1,18 @@
+components:
+  schemas:
+    AbstractPolicyGroup:
+      title: Policy Group
+      description: |
+        A policy group describes the permissions of a group.
+
+        This is the base type for the more concrete usages and not used directly within operations.
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the policy group.
+          example: group name
+        description:
+          type: string
+          description: Description of the group, omitted if empty
+          example: Group provides read-access to accounts

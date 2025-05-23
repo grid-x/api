@@ -1,0 +1,108 @@
+components:
+  schemas:
+    UserWithoutAuth:
+      title: User
+      description: |
+        Represents a user of the Xenon platform.
+
+        This is the base type for the more concrete usages and not used directly within operations.
+      type: object
+      required:
+        - id
+        - email
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          description: Unique identifier of the user.
+          type: string
+          format: uuid
+          example: 43a4f165-8233-426b-a1a4-e569665a25dd
+          readOnly: true
+        accountID:
+          description: Unique identifier of the account that the user belongs to.
+          type: string
+          format: uuid
+          example: 6dd0a658-5828-4d30-bc65-a03c6d6e425f
+          readOnly: true
+        newPassword:
+          description: Used to set a new password for the user.
+          type: string
+          writeOnly: true
+        loginsCount:
+          description: Number of user logins.
+          type: integer
+          readOnly: true
+        mfaEnabled:
+          description: Indicates whether MFA (Multi-Factor Authentication) is enabled.
+          type: boolean
+          readOnly: true
+        mfaReset:
+          description: Can be set to true if MFA (Multi-Factor Authentication) needs to to be reset. This will remove the MFA.
+          type: boolean
+          writeOnly: true
+        createdAt:
+          description: Time at which the user was created in UTC using the RFC3339 format.
+          type: string
+          format: date-time
+          example: "2009-11-10T23:20:50Z"
+          readOnly: true
+        updatedAt:
+          description: Time at which the user was last updated in UTC using the RFC3339 format.
+          type: string
+          format: date-time
+          example: "2009-11-10T23:20:50Z"
+          readOnly: true
+        fullName:
+          description: Full name of the user typically consisting of first name and last name.
+          type: string
+          example: John Doe
+        email:
+          description: The email address of the user that is used for login.
+          type: string
+          format: email
+          example: john@doe.com
+        groups:
+          description: Policy groups attached to this user which determine the effective permissions through policies.
+          type: array
+          items:
+            $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/PolicyGroup.yaml#/components/schemas/PolicyGroup"
+        mainAddress:
+          $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Address.yaml#/components/schemas/Address"
+        language:
+          $ref: "#/components/schemas/Language"
+        metadata:
+          $ref: "#/components/schemas/UserMetadata"
+    Language:
+      title: Language
+      description: The language information of the user.
+      type: object
+      required:
+        - tag
+        - name
+        - nameNative
+      properties:
+        tag:
+          type: string
+          description: |
+            Tag is the IETF language tag's primary identifier for this language.
+
+            See [here](https://tools.ietf.org/rfc/bcp/bcp47.txt) and the example below for more information.
+          example: de_DE
+        name:
+          type: string
+          description: The name of the language in English.
+          example: German
+          readOnly: true
+        nameNative:
+          type: string
+          description: The name of the language in the language itself.
+          example: Deutsch
+          readOnly: true
+    UserMetadata:
+      type: object
+      x-internal: true
+      properties:
+        analyticsEnabled:
+          description: Indicates whether the user allows anonymous analytic data to be use by gridX.
+          type: boolean
