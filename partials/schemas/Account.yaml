@@ -1,0 +1,50 @@
+components:
+  schemas:
+    Account:
+      title: Account
+      description: |
+        An account describes an organizational unit to manage access to systems for one or multiple users.
+      type: object
+      readOnly: true
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractAccount.yaml#/components/schemas/AbstractAccount'
+        - properties:
+            id:
+              type: string
+              format: uuid
+              example: 49a4f165-8233-426b-a1a4-e569665a25dd
+              description: Uniquely identifies the account.
+            parentID:
+              type: string
+              format: uuid
+              example: 19a4f165-8233-426b-a1a4-e569665a25dd
+              description: Parent of the account for a tree-like account structure. Only the root account does not have a parent ID.
+            createdAt:
+              type: string
+              format: date-time
+              description: Specifies when the account was created.
+            updatedAt:
+              type: string
+              format: date-time
+              description: Specifies when the account was updated.
+            systemsCount:
+              type: integer
+              description: SystemCount is the number of systems assigned to this account
+              example: 1
+            kind:
+              $ref: '#/components/schemas/AccountKind'
+            mainAddress:
+              $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Address.yaml#/components/schemas/Address'
+            customization:
+              # type: ANY value - omit type to indicate to codegen
+              description: Customization can be used to store arbitrary data.
+          required:
+            - id
+            - createdAt
+            - updatedAt
+    AccountKind:
+      type: string
+      enum:
+        - b2b
+        - end-user
+      description: If b2b, the account is a regular account. If end-user, the account is a customer account which contains just one user.

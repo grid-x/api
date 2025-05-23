@@ -1,0 +1,19 @@
+components:
+  schemas:
+    Address:
+      title: Address
+      description: Represents a physical address of a customer.
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractLocation.yaml#/components/schemas/AbstractLocation'
+        - type: object
+          properties:
+            postalcode:
+              description: The postal code of the location.
+              type: string
+              example: '52062'
+            region:
+              description: The region of the address.
+              type: string
+            telephone:
+              description: The telephone number of the customer.
+              type: string
