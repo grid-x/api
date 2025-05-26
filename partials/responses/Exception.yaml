@@ -60,3 +60,9 @@ components:
         application/vnd.gridx.v2+json:
           schema:
             $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/NotFoundException"
+    GatewayNotFoundResponse:
+      description: Gateway not found
+      content:
+        application/vnd.gridx.v2+json:
+          schema:
+            $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/NotFoundException'
