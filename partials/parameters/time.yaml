@@ -1,0 +1,43 @@
+components:
+  parameters:
+    interval:
+      name: interval
+      description: |
+        Requested time interval, formatted in ISO8601.
+
+        In this format the start and end point of the interval are formatted according
+        to RFC3339 and separated by a slash "/".
+      in: query
+      required: true
+      allowReserved: true
+      example: 2021-12-24T18:21:00Z/2021-12-25T18:21:00Z
+      schema:
+        type: string
+        format: datetime
+    resolution:
+      name: resolution
+      description: |
+        Requested resolution, formatted in ISO8601 units.
+
+        In this format the resolution is formatted with a single number and corresponding
+        ISO8601 date or time unit.
+      in: query
+      example: 1h
+      schema:
+        type: string
+        default: 1h
+        enum:
+          - 15m
+          - 1h
+          - 1d
+          - 1w
+          - 1M
+    date:
+      name: date
+      description:
+        Requested date without timestamp formatted in ISO8601.
+      in: query
+      example: 2021-12-24
+      schema:
+        type: string
+        format: date
