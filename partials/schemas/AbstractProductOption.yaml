@@ -1,0 +1,19 @@
+components:
+  schemas:
+    AbstractProductOption:
+      title: Product Option
+      description: |
+        A product option describes a set of features whose access should be restricted from or granted to users of a system.
+
+        Systems can be assigned a product option to manage their access to these features.
+
+        This is the base type for the more concrete usages and not used directly within operations.
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the product option.
+          example: Default Product Option
+        description:
+          type: string
+          description: Describes the purpose of the product option.

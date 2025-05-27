@@ -1,0 +1,16 @@
+components:
+  schemas:
+    ProductFunctionality:
+      type: object
+      allOf:
+        - $ref: '"https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractProductFunctionality.yaml#/components/schemas/AbstractProductFunctionality'
+        - properties:
+            id:
+              description: Unique identifier of the product functionality.
+              type: string
+              format: uuid
+              example: 4e3392ce-ed94-4946-8a11-665e0443723e
+          required:
+            - id
+            - name
+            - hide
