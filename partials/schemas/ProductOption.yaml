@@ -1,0 +1,47 @@
+components:
+  schemas:
+    ProductOption:
+      type: object
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractProductOption.yaml#/components/schemas/AbstractProductOption'
+        - properties:
+            id:
+              description: Unique identifier of the product option.
+              type: string
+              format: uuid
+              example: d5166f02-8b56-4200-90bd-35d3d17391b4
+            accountID:
+              description: Unique identifier of the account that owns the product option.
+              type: string
+              format: uuid
+              example: d73b6749-2c32-4bca-ab73-50d8e3744edf
+            isDefault:
+              type: boolean
+              description: Indicates whether the product option should be assigned by default to all systems of the owning account.
+            functionalities:
+              description: The default functionalities that a product option restricts access to. Deprecated - Use `showFunctionalities` and `hideFunctionalities` instead.
+              type: array
+              readOnly: true
+              deprecated: true
+              items:
+                $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/ProductFunctionality.yaml#/components/schemas/ProductFunctionality'
+            hideFunctionalities:
+              readOnly: true
+              description: The default functionalities that a product option restricts access to. Must be of type `hide=true`.
+              type: array
+              items:
+                $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/ProductFunctionality.yaml#/components/schemas/ProductFunctionality'
+            showFunctionalities:
+              readOnly: true
+              description: The extra functionalities that a product option grants access to. Must be of type `hide=false`.
+              type: array
+              items:
+                $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/ProductFunctionality.yaml#/components/schemas/ProductFunctionality'
+          required:
+            - id
+            - accountID
+            - name
+            - isDefault
+            - functionalities
+            - hideFunctionalities
+            - showFunctionalities

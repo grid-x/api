@@ -1,0 +1,22 @@
+components:
+  schemas:
+    AbstractProductFunctionality:
+      description: |
+        A product functionality describes a feature.
+
+        It is used to manage access to this feature via product options.
+
+        This is the base type for the more concrete usages and not used directly within operations.
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 256
+          description: Name of the product functionality.
+          example: EV Manager
+        hide:
+          type: boolean
+          description: Indicates whether the product functionality should be hidden or shown.
+        description:
+          type: string
+          description: Describes the purpose of the product functionality.
