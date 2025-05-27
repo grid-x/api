@@ -3,7 +3,7 @@ components:
     ProductFunctionality:
       type: object
       allOf:
-        - $ref: '"https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractProductFunctionality.yaml#/components/schemas/AbstractProductFunctionality'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractProductFunctionality.yaml#/components/schemas/AbstractProductFunctionality'
         - properties:
             id:
               description: Unique identifier of the product functionality.
