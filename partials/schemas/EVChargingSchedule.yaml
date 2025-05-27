@@ -1,0 +1,23 @@
+components:
+  schemas:
+    EVChargingSchedule:
+      title: EV Charging Schedule
+      type: object
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractEVChargingSchedule.yaml#/components/schemas/AbstractEVChargingSchedule'
+        - properties:
+            id:
+              type: string
+              format: uuid
+              example: ec4d0c89-a604-49ac-82f0-427f9cb42204
+              readOnly: true
+            updatedAt:
+              type: string
+              format: date-time
+              readOnly: true
+              description: Specifies when the schedule was updated the last time.
+        - required:
+            - id
+            - from
+            - to
+            - limit

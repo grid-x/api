@@ -1,0 +1,8 @@
+components:
+  schemas:
+    PositivePower:
+      title: Positive Power in Watt.
+      type: integer
+      format: int64
+      minimum: 0
+      example: 501
