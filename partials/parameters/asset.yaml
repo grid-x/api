@@ -1,0 +1,12 @@
+components:
+  parameters:
+    assetID:
+      name: assetID
+      description: |
+        Unique identifier used to access an asset.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: bb2681ab-9526-49ca-bc52-a5f4ec366958
