@@ -1,0 +1,9 @@
+components:
+  securitySchemes:
+    HeaderAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: >-
+        Enter either the JWT token with the prefix `Bearer ` or an API token
+        with the prefix `Token `
