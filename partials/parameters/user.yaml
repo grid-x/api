@@ -1,0 +1,12 @@
+components:
+  parameters:
+    userID:
+      name: userID
+      description: |
+        Unique identifier used to access a user.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: 247f7f70-eda4-44cc-9206-fee2a5fc5cd1
