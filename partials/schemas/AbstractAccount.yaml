@@ -30,9 +30,9 @@ components:
           type: string
           description: Audience is an internal ID that should not be relied upon by external parties in any way.
         solution:
-          $ref: '#/components/schemas/AccountSolution'
+          $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractAccount.yaml#/components/schemas/AccountSolution'
         modules:
-          $ref: '#/components/schemas/Modules'
+          $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/AbstractAccount.yaml#/components/schemas/Modules'
     AccountSolution:
       type: string
       description: |

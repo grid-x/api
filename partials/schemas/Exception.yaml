@@ -3,7 +3,7 @@ components:
     ValidationException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: ClientError - Validation
           description: Indicates that the request body contains fields which do not pass the validation.
           type: object
@@ -17,7 +17,7 @@ components:
     NotFoundException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: ClientError - Not Found
           description: Not Found indicates that the entity was not found.
           example:
@@ -25,7 +25,7 @@ components:
     UnauthorizedException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: 'ClientError - Unauthorized'
           description: The client isn't authorized to access the requested resource.
           example:
@@ -33,7 +33,7 @@ components:
     InvalidException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: ClientError - Validation
           description: |
             Validation indicates that the request body contains fields which
@@ -49,7 +49,7 @@ components:
     ConflictException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: ClientError - Conflict
           description: |
             Conflict indicates that the client is attempting to create a resource that already exists.
@@ -59,7 +59,7 @@ components:
     ForbiddenException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: UnauthorizedError - Forbidden Error
           description: Forbidden Error
           example:
@@ -67,7 +67,7 @@ components:
     BadRequestException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: ClientError - Bad Request
           description: |
             Bad Request indicates that the request body is not a valid JSON or
@@ -77,7 +77,7 @@ components:
     InternalException:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: ServerSideError - Internal Server Error
           description: Internal Server Error
           example:
@@ -85,7 +85,7 @@ components:
     BadGateway:
       readOnly: true
       allOf:
-        - $ref: '#/components/schemas/GeneralException'
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
         - title: BadGatewayError
           description: Indicates that there has been an error from an upstream server.
           example:
