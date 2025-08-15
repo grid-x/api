@@ -1,0 +1,38 @@
+---
+components:
+  parameters:
+    AccountID:
+      name: X-GridX-AccountID
+      in: header
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The ID of the request's account extracted from the token or JWT by the microserviceproxy.
+      externalDocs:
+        description: microserviceproxy
+        url: https://github.com/grid-x/backend/blob/master/pkg/microserviceproxy/README.md
+    AuthenticatedAccountID:
+      name: X-GridX-AuthenticatedAccountID
+      in: header
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: |-
+        The ID of the request's authenticated account extracted from the token or JWT by the microserviceproxy.
+      externalDocs:
+        description: microserviceproxy
+        url: https://github.com/grid-x/backend/blob/master/pkg/microserviceproxy/README.md
+    UserID:
+      name: X-GridX-UserID
+      in: header
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: |-
+        The ID of the request's authenticated user extracted from the token or JWT by the microserviceproxy.
+      externalDocs:
+        description: microserviceproxy
+        url: https://github.com/grid-x/backend/blob/master/pkg/microserviceproxy/README.md
