@@ -1,0 +1,32 @@
+---
+components:
+  parameters:
+    accountID:
+      name: X-GridX-AccountID
+      in: header
+      x-internal: true
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: The ID of the request's account extracted from the token or JWT by the microservice proxy.
+    authenticatedAccountID:
+      name: X-GridX-AuthenticatedAccountID
+      in: header
+      x-internal: true
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: |-
+        The ID of the request's authenticated account extracted from the token or JWT by the microservice proxy.
+    userID:
+      name: X-GridX-UserID
+      in: header
+      x-internal: true
+      schema:
+        type: string
+        format: uuid
+      required: true
+      description: |-
+        The ID of the request's authenticated user extracted from the token or JWT by the microservice proxy.
