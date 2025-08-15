@@ -32,7 +32,7 @@ components:
               description: SystemCount is the number of systems assigned to this account
               example: 1
             kind:
-              $ref: '#/components/schemas/AccountKind'
+              $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Account.yaml#/components/schemas/AccountKind'
             mainAddress:
               $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Address.yaml#/components/schemas/Address'
             customization:

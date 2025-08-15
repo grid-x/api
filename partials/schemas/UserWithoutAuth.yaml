@@ -70,9 +70,9 @@ components:
         mainAddress:
           $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Address.yaml#/components/schemas/Address"
         language:
-          $ref: "#/components/schemas/Language"
+          $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/UserWithoutAuth.yaml#/components/schemas/Language"
         metadata:
-          $ref: "#/components/schemas/UserMetadata"
+          $ref: "https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/UserWithoutAuth.yaml#/components/schemas/UserMetadata"
     Language:
       title: Language
       description: The language information of the user.
