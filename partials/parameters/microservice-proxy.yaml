@@ -2,7 +2,7 @@
 components:
   parameters:
     accountID:
-      name: X-GridX-AccountID
+      name: X-Gridx-Accountid
       in: header
       x-internal: true
       schema:
@@ -11,7 +11,7 @@ components:
       required: true
       description: The ID of the request's account extracted from the token or JWT by the microservice proxy.
     authenticatedAccountID:
-      name: X-GridX-AuthenticatedAccountID
+      name: X-Gridx-Authenticatedaccountid
       in: header
       x-internal: true
       schema:
@@ -21,7 +21,7 @@ components:
       description: |-
         The ID of the request's authenticated account extracted from the token or JWT by the microservice proxy.
     userID:
-      name: X-GridX-UserID
+      name: X-Gridx-Userid
       in: header
       x-internal: true
       schema:
