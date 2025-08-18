@@ -106,3 +106,7 @@ components:
         analyticsEnabled:
           description: Indicates whether the user allows anonymous analytic data to be use by gridX.
           type: boolean
+        analyticsLastEnabledAt:
+          description: Indicates when the user gave their consent to enable analytics. This will help with re-requesting consent if/when the privacy policy changes.
+          type: string
+          format: date-time
