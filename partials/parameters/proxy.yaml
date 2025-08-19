@@ -1,7 +1,7 @@
 ---
 components:
   parameters:
-    proxyAccountID:
+    headerAccountID:
       name: X-Gridx-Accountid
       in: header
       x-internal: true
@@ -9,8 +9,11 @@ components:
         type: string
         format: uuid
       required: true
-      description: The ID of the request's account extracted from the token or JWT by the microservice proxy.
-    proxyAuthenticatedAccountID:
+      description: |-
+        The ID of the account extracted from the token or JWT by the microservice proxy. 
+        On impersonated requests, this holds the impersonated account ID. Otherwise it falls back to the authenticated 
+        account ID.
+    headerAuthenticatedAccountID:
       name: X-Gridx-Authenticatedaccountid
       in: header
       x-internal: true
@@ -20,7 +23,7 @@ components:
       required: true
       description: |-
         The ID of the request's authenticated account extracted from the token or JWT by the microservice proxy.
-    proxyUserID:
+    headerUserID:
       name: X-Gridx-Userid
       in: header
       x-internal: true
