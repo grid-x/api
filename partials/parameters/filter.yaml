@@ -21,7 +21,7 @@ components:
         format: int32
         default: 20
         minimum: 20
-        maximum: 100
+        maximum: 500
       example: 50
     sort:
       name: sort
