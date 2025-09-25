@@ -1,0 +1,11 @@
+parameters:
+  customerID:
+    name: customerID
+    description: |
+      Unique identifier used to access a customer account.
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+    example: 17874c1b-d073-4b06-bf01-a1497fbe1142
