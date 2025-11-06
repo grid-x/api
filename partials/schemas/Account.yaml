@@ -44,6 +44,7 @@ components:
             - updatedAt
     AccountKind:
       type: string
+      readOnly: true
       enum:
         - b2b
         - end-user
