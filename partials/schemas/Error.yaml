@@ -1,0 +1,25 @@
+components:
+  schemas:
+    Error:
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml#/components/schemas/GeneralException'
+        - type: object
+          description: |-
+            Error schema, that supports both:
+              - [gridX Exception schema](https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Exception.yaml)
+              - [Problem Details schema (RFC 9457)](https://datatracker.ietf.org/doc/html/rfc9457)
+          required:
+            - status
+            - title
+          properties:
+            type:
+              type: string
+            status:
+              type: integer
+              format: int32
+            title:
+              type: string
+            detail:
+              type: string
+            instance:
+              type: string
