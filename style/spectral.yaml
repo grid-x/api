@@ -1,8 +1,8 @@
 formats: ["oas3"]
 
-extends: 
+extends:
   - spectral:oas
-    
+
 rules:
   info-contact: off # ignore
   operation-operationId: off # ignore
@@ -10,6 +10,17 @@ rules:
   # TODO(kdevo): ref-siblings are supported in OAS 3.1, turn off for forward-support. Remove exclusion after we upgraded to 3.1.
   no-$ref-siblings: off
   oas3-valid-media-example: off
+
+  # Besides checking, that the scheme referenced in an operation's security requirement is defined on the OpenAPI spec's
+  # components/securitySchemes, this rule also assumes that each security requirement's value is a list of OAuth2 scopes
+  # and tries to verify these against the referenced security scheme's flows.*.scopes.
+  #
+  # Because of that, we unfortunately have to disable this rule on the public, shared ruleset. We will add a custom
+  # linting rule to our internal API bundling process to still verify that no security scheme is referenced, that isn't
+  # actually defined. Because we have to implement a custom lookup spectral function in JS for that, we can't use it on
+  # this public rule set, as this would break shareability via HTTPS.
+  #
+  oas3-operation-security-defined: off
 
 # General
   minimum-openapi-version-3:
@@ -31,21 +42,6 @@ rules:
     then:
       field: x-api-id
       function: truthy
-
-  ensure-info-x-audience:
-    description: Ensures that all OpenAPIs have an information object audience extension. The audience has the purpose of describing the visibility (external, internal) of the endpoint and who will be using it (public, partner, company, team). 
-    message: The info object should have an audience extension.
-    severity: error
-    given: "$.info"
-    then:
-      field: x-audience
-      function: enumeration
-      functionOptions:
-        values:
-          - public-external
-          - partner-external
-          - company-internal
-          - team-internal
 
 # PATH
   ensure-do-not-use-api-for-base-path:
@@ -69,6 +65,7 @@ rules:
       functionOptions:
         match: "^\/([a-z0-9]+(-[a-z0-9]+)*)?(\/[a-z0-9]+(-[a-z0-9]+)*|\/{.+})*$" 
 
+# Operations
   ensure-endpoint-summary:
     description: Endpoints must have a summary.
     given: $.paths[*][*]
@@ -124,16 +121,6 @@ rules:
         match: "^/[^/]*((/{[^}]*})*/[^/]*(/{[^}]*})*){0,4}/?$"
 
 # Request/Response
-  ensure-response-description:
-    description: Responses must have a description.
-    given: $.components.schemas[*]
-    severity: warn
-    recommended: true
-    message: "{{description}}: {{error}}"
-    then:
-      field: description
-      function: truthy
-
   ensure-response-description-punctuation:
     description: Response description must end with a dot.
     given: $.components.schemas[*]
