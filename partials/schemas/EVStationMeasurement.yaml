@@ -1,0 +1,85 @@
+components:
+  schemas:
+    EVStationMeasurement:
+      title: |
+        MeasurementEVStation represents the power or energy the gateway measured
+        from a ev charging station
+      type: object
+      properties:
+        applianceID:
+          type: string
+          description: gridX API internal ID of the appliance.
+          example: a7d56cb5-2dac-48d4-952a-6eb75ee0ce18
+        power:
+          type: number
+          format: double
+          description: |
+            Measured power used to charge/discharge via EV station,
+            positive values indicate charging, negatives discharging.
+        charge:
+          type: number
+          format: double
+          minimum: 0
+          description: |
+            Charge is the measured power used to charge the EV.
+
+            Unit W. Positive values indicate charging power.
+        discharge:
+          type: number
+          format: double
+          minimum: 0
+          description: |
+            Discharge is the measured power used to discharge the EV.
+
+            Unit W. Positive values indicate discharging power.
+        stateOfCharge:
+          type: number
+          format: double
+          description: |
+            Percentage of the EVs battery capacity charged (0.0-1.0).
+        readingTotal:
+          type: number
+          format: double
+          description: The sum of all meter readings in Wh.
+        readingTariff1:
+          type: number
+          format: double
+          description: The meter reading of meter tariff 1 in Wh.
+        readingTariff2:
+          type: number
+          format: double
+          description: The meter reading of meter tariff 2 in Wh.
+        plugState:
+          type: string
+          description: Defines whether this EV is currently plugged in the charging station and whether it's charging.
+          default: UNPLUGGED
+          enum:
+            - UNPLUGGED
+            - PLUGGED_ON_STATION
+            - PLUGGED_ON_STATION_AND_PLUGGED_ON_VEHICLE
+        stationState:
+          type: string
+          description: Describes the status of the charging station. Note that this value is only meaningful in live measurements.
+          default: UNKNOWN
+          enum:
+            - UNKNOWN
+            - NOT_READY
+            - READY
+            - CHARGING
+            - CHARGING_INTERRUPTED
+            - ERROR
+            - AUTHORIZATION_REJECTED
+            - ZERO_POWER_LOCK
+            - CHARGING_IN_PHASE_SWITCH
+        currentL1:
+          type: number
+          format: double
+          description: Current of the first phase in Ampere.
+        currentL2:
+          type: number
+          format: double
+          description: Current of the second phase in Ampere.
+        currentL3:
+          type: number
+          format: double
+          description: Current of the third phase in Ampere.
