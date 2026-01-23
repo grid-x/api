@@ -1,0 +1,57 @@
+components:
+  schemas:
+    BatteryMeasurement:
+      title: Battery Measurement
+      description: |
+        MeasurementBattery represents the aggregated power or energy the gateway
+        measured from a battery.
+      type: object
+      properties:
+        applianceID:
+          type: string
+          description: |
+            ApplianceID is the battery's appliance ID. It is empty for
+            aggregated batteries.
+          example: a7d56cb5-2dac-48d4-952a-6eb75ee0ce18
+        power:
+          type: number
+          format: double
+          description: |
+            Power is the measured power used to charge/discharge the battery.
+
+            Unit W, Meaning, Positive values indicate discharging. Negative
+            values indicate charging.
+        charge:
+          type: number
+          format: double
+          minimum: 0
+          description: |
+            Charge is the measured power used to charge the battery.
+
+            Unit W. Positive values indicate charging power.
+        discharge:
+          type: number
+          format: double
+          minimum: 0
+          description: |
+            Discharge is the measured power used to discharge the battery.
+
+            Unit W. Positive values indicate discharging power.
+        remainingCharge:
+          type: number
+          format: double
+          description: RemainingCharge is the amount of energy left.
+        capacity:
+          type: number
+          format: double
+          description: Maximum energy the battery can provide in Wh.
+        nominalCapacity:
+          type: number
+          format: double
+          description: Nominal capacity of the battery in Wh.
+        stateOfCharge:
+          type: number
+          format: double
+          description: |
+            State of Charge indicates how full a battery is. Unit Percentage
+            points 0.0-1.0.
