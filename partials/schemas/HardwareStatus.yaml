@@ -1,0 +1,52 @@
+components:
+  schemas:
+    HardwareStatus:
+      title: Hardware Status
+      type: object
+      description: |
+        HardwareStatus provides information about the condition of the inverter and in case of issues, 
+        possible follow-up actions the user/installer can perform to resolve them.
+      properties:
+        state:
+          type: string
+          enum:
+            - UNKNOWN
+            - OK
+            - WARNING
+            - ERROR
+          description: State of the inverter.
+        action:
+          type: string
+          description: Recommended action to resolve ERROR/WARNING state.
+          x-extensible-enum:
+            - CONSULT_DEVICE_READOUT
+            - CONTACT_INSTALLER
+            - CONTACT_MANUFACTURER
+            - CONTACT_GRID_OPERATOR
+        errorCode:
+          type: string
+          description: Inverter manufacturer/model dependent error code formatted as it would be shown on display.
+        description:
+          type: string
+          description: Contains details about the inverter ERROR and WARNING states.
+          x-extensible-enum:
+            - OTHER
+            - GRID_FAULT
+            - INSULATION_FAILURE
+            - INTERFERENCE_DEVICE
+            - FAN_FAULT
+            - WAIT_FOR_UPDATE
+            - SOFTWARE_FAULT
+            - HARDWARE_FAULT
+            - PARAMETER_FAULT
+            - HIGH_TEMPERATURE
+            - HIGH_DC_VOLTAGE
+            - LOW_DC_POWER
+            - DC_OVERCURRENT
+            - INSTALLATION_FAULT
+            - COMMUNICATION_FAULT
+            - BATTERY_FAULT
+        measuredAt:
+          type: string
+          format: date-time
+          example: '2018-04-15T00:00:00Z'
