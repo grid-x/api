@@ -34,6 +34,7 @@ components:
             kind:
               $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Account.yaml#/components/schemas/AccountKind'
             mainAddress:
+              deprecated: true
               $ref: 'https://raw.githubusercontent.com/grid-x/api/refs/heads/main/partials/schemas/Address.yaml#/components/schemas/Address'
             customization:
               # type: ANY value - omit type to indicate to codegen
