@@ -21,7 +21,6 @@ components:
           example: false
         email:
           type: string
-          format: email
           example: john@doe.com
           description: The email field of the account can optionally be chosen e.g. for contact purposes (in order to reach the responsible person for the account).
           maxLength: 256
